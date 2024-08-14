@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import parse from 'html-react-parser'
 
-function Message({email,text,date}) {
+function Message({email,text,date,openMail}) {
     // console.log(email,message)
     
 const [currentDate, setCurrentDate] = useState(null);
@@ -22,8 +22,8 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className='m-4'>  
-    <hr className="  border-[#323440]"></hr>
+    <div className='m-4' onClick={openMail}>  
+    <hr className="  border-[#323440]"></hr> 
     <div className='flex flex-col px-[8px] py-[12px] gap-[8px]'>
         <div className='flex justify-between'>
         <h1 className='text-[14px] font-medium text-white'>{email}</h1>

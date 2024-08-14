@@ -23,32 +23,8 @@ function Home() {
         localStorage.setItem("token", `Bearer ${token}`);
        }
     }, [token]);
-    // useEffect(() =>{
-    //   const interval = setInterval(async () => {
-    //     try {
-    //       const token = localStorage.getItem("token");
-    //       const res = await axios.get(
-    //         "https://hiring.reachinbox.xyz/api/v1/onebox/list",
-    //         {
-    //           headers: {
-    //             Authorization: token,
-    //           },
-    //         }
-    //       );
-    //       setData(res.data.data);
-     
-    //     } catch (error) {
-    //       console.error("Error fetching data:", error);
-    //     }
-    //   }, 1000);
-    
-    //   // Cleanup function to clear the interval when the component unmounts
-    //   return () => clearInterval(interval);
-  
-    // },[])
-  
   return (
-    <div className=' gap-[50px] bg-white dark:bg-black flex justify-center items-center p-[125px] flex-col'>
+    <div className=' gap-[50px] bg-white dark:bg-black flex justify-center  items-center h-screen flex-col'>
       <img src="/src/assets/nomessage.svg"></img>
       <div className='gap-[25px] flex flex-col items-center'>
         <h1 className='font-bold text-black dark:text-white text-[24px]'>It’s the beginning of a legendary sales pipeline</h1>

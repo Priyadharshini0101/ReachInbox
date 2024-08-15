@@ -13,8 +13,43 @@ import { useSelector } from 'react-redux';
 import { current } from '@reduxjs/toolkit';
 import parse from 'html-react-parser'
 import CustomMail from './CustomMail';
+import Modal  from 'react-modal'
+import { BsLightningChargeFill } from "react-icons/bs";
+import {
+  FaCaretDown,
+  FaEye,
+  FaImage,
+  FaRegSmile,
+  FaUserMinus,
+} from "react-icons/fa";
+import { IoMdCode } from "react-icons/io";
+import { IoLinkSharp } from "react-icons/io5";
+import { RxCross2 } from "react-icons/rx";
+import { TbSquareLetterA } from "react-icons/tb";
+
+
+
 
 function MailBox({currentMail}) {
+    
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [modalIsOpenDelete,setModalIsOpenDelete] = useState(false)
+    // const [activeTab,setActiveTab] = useState("Home")
+  
+    function openModal() {
+      setIsOpen(true);
+    }
+
+    function closeModal() {
+      setIsOpen(false);
+    }
+
+    function openDeleteModal(){
+        setModalIsOpenDelete(true);
+    }
+    function closeDeleteModal(){
+        setModalIsOpenDelete(false)
+    }
     
   const [expand,setExpand] = useState(false)
   const menu1 = [
@@ -73,11 +108,36 @@ function MailBox({currentMail}) {
 }
 }
 fetch()
- console.log(selectedMail,currentMail.length)
+
 },[currentMail])
 
+
+useEffect(() => {
+    const handleKeyPress = (event) => {
+        console.log(modalIsOpen)
+        if(modalIsOpen === false){
+      if (event.key === "d" || event.key === "D") {
+        openDeleteModal(true)
+        // console.log("Pressed D");
+      }
+    }
+    if(modalIsOpenDelete === false){
+
+          if (event.key === "r" || event.key === "R") {
+        openModal(true)
+        // console.log("Pressed R");
+            }  }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [event]);
+
   return (
-    <>
+    
     <div className='flex flex-col w-full  '   >
     <div  className='flex px-[24px] py-[16px] justify-between border-b  dark:border-[#343A40]' >
       <div className='flex flex-col '>
@@ -156,6 +216,7 @@ fetch()
           
   
     </div>
+
    </div>
         {selectedMail ? selectedMail.map((message,index) => expand ? (
         
@@ -169,9 +230,126 @@ fetch()
 
         <button onClick={() => setExpand((expand) => !expand)} className='text-white text-[10px] font-semibold w-[150px] text-center flex items-center justify-center gap-[5px] '><img src="/src/assets/expand.svg"></img>{!expand ? `View `:`Hide `} All <p className='text-[#5C7CFA]'>{selectedMail.length - 1} </p>replies</button>
     <hr className=' border-[#323440] h-[0.2px] w-[50%]'></hr>
-    </div>:<div></div>} </div> 
-</>
+  
+    <Modal
+        isOpen={modalIsOpenDelete}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={closeDeleteModal}
+        // customStyles={customStyles}
+        className={`w-[300px] h-[150px] p-2.5 absolute top-[40%] left-[40%] border-[1.5px] border-stone-800  bg-stone-500 ${useLocation().pathname === "/add-post" ? `top-[30%]` :``  }`}>
+   <div className='flex flex-col  '>
+      {/* <button onClick={closeModal} className=''>close</button></div> */}
+        <div className='text-center m-[10px] text-[18px]'>Do you really want to logout?</div>
+          <div className='flex justify-center'>
+          <button   className='m-[24px] w-[72px] h-[36px] hover:bg-stone-50 border-stone-800 bg-stone-200 border-[1.5px] shadow-xl'>YES</button>
+          <button onClick={() => closeDeleteModal()}  className='m-[24px] w-[72px] h-[36px] hover:bg-stone-50 border-stone-800 bg-stone-200 border-[1.5px] shadow-xl' >NO</button>
+          </div>
+          </div>
+      </Modal>
+   
+    </div>
+    :<div></div>}
+    
+<div className='p-[24px]'>  
+<button className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC]  text-white font-semibold cursor-pointer rounded-md h-[40px] w-[136px] flex justify-center items-center gap-[10px]" onClick={() => openModal()}><img src="/src/assets/reply.svg"></img><p className='text-[14px] text-white font-semibold'>Reply</p></button>  
+</div>
+
+<div key={currentMail.threadId} className={` absolute bottom-[25px]  w-[50%] z-50 ${!modalIsOpen ? `hidden`:``}`}>
+      <div className="bg-[#141517] rounded-lg border border-[#41464B]">
+        <div className="flex justify-between items-center px-4 bg-[#23272C] rounded-t-lg py-2 border-b border-[#41464B]">
+          <div className="pl-4 text-sm">Reply</div>
+          <div onClick={() =>closeModal()}>
+            {" "}
+            <RxCross2 className="text-[20px] cursor-pointer" />
+          </div>
+        </div>
+        <div className="flex text-sm py-2 border-b border-[#41464B] pl-8">
+          <div className="text-[#BAB9BD] w-[64px]">To :</div>
+          <input
+            className="bg-transparent  w-full mx-4"
+            placeholder="Recipient's Email"
+            name="to"
+            value={currentMail.fromEmail}
+            // onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="flex text-sm py-2 border-b border-[#41464B] pl-8">
+          <div className="text-[#BAB9BD] w-[64px]">From :</div>
+          <input
+            className="bg-transparent w-full mx-4"
+            placeholder="Your Email"
+            name="from"
+            value={currentMail.fromName}
+            // onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="flex text-sm py-2 border-b border-[#41464B] pl-8">
+          <div className="text-[#BAB9BD] w-[64px]">Subject :</div>
+          <input
+            className="bg-transparent w-full mx-4"
+            placeholder="Subject"
+            name="subject"
+            value={''}
+            // onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="flex text-sm border-b border-[#41464B] px-4 py-4  h-2/3">
+          <textarea
+            className="bg-transparent ml-4 w-full h-[250px]"
+            placeholder="Message Body"
+            name="body"
+            value={''}
+            // onChange={handleTextAreaChange}
+          />
+        </div>
+
+        <div className="flex space-x-8 items-center my-2 mx-4">
+          <div
+            className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC] px-4 py-2 rounded-md flex items-center cursor-pointer"
+            // onClick={handleSendReply}
+          >
+            Send <FaCaretDown className="ml-4" />
+          </div>
+          <div className="flex items-center text-[#ADADAD]">
+            <BsLightningChargeFill className="mr-3" />
+            Variables
+          </div>
+          <div className="flex items-center text-[#ADADAD]">
+            <FaEye className="mr-3" />
+            Preview Email
+          </div>
+          <div className="flex space-x-4 text-xl text-[#ADADAD]">
+            <div>
+              <TbSquareLetterA />
+            </div>
+            <div>
+              <IoLinkSharp />
+            </div>
+            <div>
+              <FaImage />
+            </div>
+            <div>
+              <FaRegSmile />
+            </div>
+            <div>
+              <FaUserMinus />
+            </div>
+            <div>
+              <IoMdCode />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    </div>
   )
 }
 
 export default MailBox
+
+  

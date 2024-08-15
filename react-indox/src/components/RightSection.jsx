@@ -13,7 +13,7 @@ function RightSection({currentMail}) {
   // const currentMail = useSelector((state) => state.mails.mails)
   return (
  
-    <div className='w-[35%] h-screen border-l py-[25px] px-2.5 dark:border-[#343A40] gap-[10px] flex flex-col dark:bg-black bg-white'>
+    <div className='w-[35%] border-l py-[25px] px-2.5 dark:border-[#343A40] gap-[10px] flex flex-col dark:bg-black bg-white'>
     <div className='bg-[#23272C] p-[8px] text-white text-[14px] font-semibold rounded-lg'>Lead Details</div>
     <div className='flex flex-col gap-[20px] px-[12px] py-[8px] '>
       <Details title="Name" data={currentMail.fromName}></Details>

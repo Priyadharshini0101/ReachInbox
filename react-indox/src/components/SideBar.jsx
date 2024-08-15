@@ -4,8 +4,8 @@ import { useLocation} from 'react-router-dom'
 function SideBar() {
     
   return (
-    <div class="dark:bg-[#101113] bg-white fixed top-0 start-0 bottom-0 z-50 w-[56px]  border-e  border-gray-100 dark:border-[#343A40] " role="dialog" tabindex="-1" aria-label="Mini Sidebar">
-      <div class="flex flex-col h-screen items-center justify-between">
+    <div class="dark:bg-[#101113] bg-white top-0 start-0 bottom-0 z-50 w-[56px]  border-e  border-gray-100 dark:border-[#343A40] " role="dialog" tabindex="-1" aria-label="Mini Sidebar">
+      <div class="flex flex-col h-full items-center justify-between">
         <div class="py-[24px] px-[8px]">
            <img src='/src/assets/reachInboxLogo.svg' className=''></img>
         </div>

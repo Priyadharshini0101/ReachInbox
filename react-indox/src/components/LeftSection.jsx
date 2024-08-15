@@ -38,9 +38,9 @@ function LeftSection() {
   
     
   return (
-    <div className='ml-[56px] w-[35%] h-screen border-e p-2.5 dark:border-[#343A40]  flex flex-col  dark:bg-black bg-white'> 
+    <div className=' w-[35%] h-[90vh] border-e p-2.5 dark:border-[#343A40]  flex flex-col  dark:bg-black bg-white'> 
     <div className='justify-between flex  p-[10px] '>
-<h1 className='text-[#4285F4] font-bold text-[20px] gap-[4px]  inline-flex items-center '>All Inbox(s)<MdOutlineKeyboardArrowDown className="font-medium mt-1" /></h1>
+<h1 className='text-[#4285F4] font-bold text-[20px] gap-[4px]  inline-flex items-center '>All Inbox(s)<MdOutlineKeyboardArrowDown className="font-medium mt-1 cursor-pointer" /></h1>
 <button className="bg-[#25262b] w-[32px] h-[32px] border-[1px] p-[8px] border-gray-900 rounded-md" onClick={() => navigate('/inbox')}><img src="/src/assets/refresh.svg" className=''></img></button>
     </div>
     <div className='flex px-[10px] text-[14px]  gap-[5px] items-center'>
@@ -61,7 +61,7 @@ function LeftSection() {
         
       <div class=" inline-flex mr-[5px] items-center justify-center w-6 h-6 text-xs font-semibold bg-[#222426] text-[#5C7CFA] rounded-full ">{data.length}</div>
     <h1 className='text-[#e6e6e6] text-[14px] font-semibold inline-flex items-center'>New Replies</h1></div>
-<h1 className='text-[#e6e6e6] font-semibold text-[14px] gap-[16px]  inline-flex items-center '>Newest<MdOutlineKeyboardArrowDown className="w-[18px] h-[18px]" /></h1>
+<h1 className='text-[#e6e6e6] font-semibold text-[14px] gap-[16px]  inline-flex items-center '>Newest<MdOutlineKeyboardArrowDown className="w-[18px] h-[18px] cursor-pointer" /></h1>
 
 </div>
 <div>

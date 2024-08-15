@@ -24,12 +24,15 @@ function App() {
   },[]);
 
   return (
-    <>
+    <div className='flex '>
     
   {token ? <SideBar></SideBar> :<></>}
+  <div className='w-full'>
   {token ? <TopBar></TopBar> :<></>}
+  
       <Outlet />
-    </>
+      </div> 
+    </div>
       
     )
 }

@@ -17,7 +17,7 @@ function TopBar() {
 
 
   return (
-    <div className='flex ml-[56px]  h-[64px] bg-white dark:bg-[#1F1F1F] border-b border-gray-100 dark:border-[#343A40] justify-between items-center px-[25px]'>
+    <div className='flex w-full h-[64px] bg-white dark:bg-[#1F1F1F] border-b border-gray-100 dark:border-[#343A40] justify-between items-center px-[25px]'>
     <h1 className='font-bold text-[16px] text-black dark:text-white'>Onebox</h1>
     <div className='flex gap-[25px]'>
     <label class="inline-flex items-center cursor-pointer">
@@ -31,7 +31,7 @@ function TopBar() {
               )}
     </div>
     </label>
-    <h1 className='text-[14px]  text-black dark:text-white font-semibold inline-flex items-center'>Priya's Workspace <MdOutlineKeyboardArrowDown className="text-3xl ml-2.5" /></h1>
+    <h1 className='text-[14px]  text-black dark:text-white font-semibold inline-flex items-center'>Priya's Workspace <MdOutlineKeyboardArrowDown className="text-3xl ml-2.5 cursor-pointer" /></h1>
     
     </div>
     

@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState} from 'react'
+import axios from 'axios';
 
 import { BsLightningChargeFill } from "react-icons/bs";
 import {
@@ -13,6 +14,72 @@ import { IoLinkSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { TbSquareLetterA } from "react-icons/tb";
 function ReplyMail({modalIsOpen,currentMail,closeModal}) {
+  const [replyData, setReplyData] = useState({
+    to: currentMail.fromEmail,
+    from: currentMail.toEmail,
+    subject: "",
+    body: "",
+    inReplyTo:"",
+    references:"",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setReplyData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  
+  console.log(currentMail)
+  const sendReply = async () => {
+  
+    const token = localStorage.getItem("token");
+    try {
+      const res = await axios.post(
+        `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${currentMail.threadId}`,
+        {
+        
+          toName:currentMail.toName,
+          fromName:currentMail.fromName,
+          to: replyData.to,
+          references:replyData.references,
+          from: replyData.from,
+          subject: replyData.subject,
+          body: replyData.body,
+          inReplyTo:replyData.inReplyTo
+        
+      },
+
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log(res)
+    } catch(error) {
+      
+      alert("Reply is not sent successfully")
+      console.log(error)
+     
+    }
+    closeModal(false)
+    setReplyData({
+      
+    to: currentMail.fromEmail,
+    from: currentMail.toEmail,
+    subject: "",
+    body: "",
+    inReplyTo:"",
+    references:"",
+  
+    })
+    
+  };
+
+ 
   return (
     
 
@@ -31,8 +98,8 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
             className="bg-transparent  w-full mx-4"
             placeholder="Recipient's Email"
             name="to"
-            value={currentMail.fromEmail}
-            // onChange={handleInputChange}
+            value={replyData.from}
+            onChange={handleChange}
           />
         </div>
 
@@ -42,8 +109,8 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
             className="bg-transparent w-full mx-4"
             placeholder="Your Email"
             name="from"
-            value={currentMail.fromName}
-            // onChange={handleInputChange}
+            value={replyData.to}
+            onChange={handleChange}
           />
         </div>
 
@@ -53,8 +120,8 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
             className="bg-transparent w-full mx-4"
             placeholder="Subject"
             name="subject"
-            value={currentMail.subject}
-            // onChange={handleInputChange}
+            value={replyData.subject}
+            onChange={handleChange}
           />
         </div>
 
@@ -63,15 +130,15 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
             className="bg-transparent ml-4 w-full h-[250px]"
             placeholder="Message Body"
             name="body"
-            value={''}
-            // onChange={handleTextAreaChange}
+            value={replyData.body}
+            onChange={handleChange}
           />
         </div>
 
         <div className="flex space-x-8 items-center my-2 mx-4">
           <div
             className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC] px-4 py-2 rounded-md flex items-center cursor-pointer"
-            // onClick={handleSendReply}
+            onClick={sendReply}
           >
             Send <FaCaretDown className="ml-4" />
           </div>

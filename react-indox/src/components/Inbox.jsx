@@ -13,11 +13,46 @@ import { useSelector } from 'react-redux';
 import { current } from '@reduxjs/toolkit';
 import parse from 'html-react-parser'
 import CustomMail from './CustomMail';
+import MailBox from './MailBox';
 
 
 
 function Inbox() {
   const currentMail = useSelector((state) => state.mails.mails)
+  const [expand,setExpand] = useState(false)
+  const menu1 = [
+    { 
+      color:`bg-[#E6D162]`,
+      text:"Meeting Completed"
+    },
+    {
+      color:`bg-[#57E0A6]`,
+      text:"Interested"
+    },{
+      color:`bg-[#626FE6]`,
+      text:"Closed"
+    }
+  ]
+
+  const menu2 = [
+    {
+      img:'/src/assets/markAsRead.svg',
+      text:'Mark as unread'
+    },{
+      img:'/src/assets/editLead.svg',
+      text:'Edit lead'
+    },{
+      img:'/src/assets/removeLead.svg',
+      text:'Remove lead'
+    },{
+      img:'/src/assets/setReminder.svg',
+      text:'Set reminder'
+    },{
+      img:'/src/assets/delete.svg',
+      text:'Delete'
+    }
+  ]
+  const [ currentMenu,setCurrentMenu] = useState(menu1[0])
   const navigate = useNavigate()
   const [selectedMail,setSelectedMail] = useState([])
    useEffect(() =>{
@@ -47,81 +82,12 @@ fetch()
   return (
     <div className='flex justify-between '> 
     <LeftSection></LeftSection>
-    {currentMail.length !== 0 ? <><div className='flex flex-col w-full  '>
-    <div className='flex px-[24px] py-[16px] justify-between border-b  dark:border-[#343A40]  '>
-      <div className='flex flex-col '>
-     <h1 className='text-[14px] text-white font-semibold'>{currentMail.fromName}</h1>
-     <p className='text-[12px] text-gray-500'>{currentMail.fromEmail}</p>
-     </div>
-  <div className='flex gap-[25px]'>
-    <Menu as="div" className=" relative text-left">
-            <MenuButton className=" flex  border-[1px] rounded-md border-[#343A40] bg-[#222426]  text-[16px] sm:text-[14px]  px-[16px]  py-[6px]   text-white shadow-sm hover:bg-[#6d6d6eb3]">
-              <div className='flex gap-[5px] items-center'>
-            <div class=" inline-flex mr-[5px] items-center border-[#444234] justify-center w-3 h-3 bg-[#E1D162] rounded-full "></div>
-          Meeting Completed
-      <MdOutlineKeyboardArrowDown className='w-[24px] h-[24px]'></MdOutlineKeyboardArrowDown>
-      </div>
-            </MenuButton>
-            <MenuItems
-              transition
-              className="absolute  bg-black  left-0 z-10 w-48 origin-top-right  shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
-              <div className="py-1">
-                {/* {genres.map((genre, index) => (
-                  <MenuItem >
-                    <a
-                      href="#"
-                      className="block px-2 py-1 text-sm text-white data-[focus]:underline data-[focus]:text-white"
-                      onClick={() => {
-                        addGenreHandler(genre);
-                      }}
-                    >
-                     
-                    </a>
-                  </MenuItem>
-                ))} */}
-              </div>
-            </MenuItems>
-          </Menu>
-          
-     <Menu as="div" className=" relative text-left">
-            <MenuButton className=" flex  border-[1px] border-[#343A40] bg-[#222426] rounded-md   text-[16px] sm:text-[14px]  px-[16px]  py-[6px]   text-white shadow-sm hover:bg-[#6d6d6eb3]">
-              <div className='flex gap-[5px] items-center'>
-       Move
-      <MdOutlineKeyboardArrowDown className='w-[24px] h-[24px]'></MdOutlineKeyboardArrowDown>
-      </div>
-            </MenuButton>
-            <MenuItems
-              transition
-              className="absolute  bg-black  left-0 z-10 w-48 origin-top-right  shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
-              <div className="py-1">
-                {/* {genres.map((genre, index) => (
-                  <MenuItem >
-                    <a
-                      href="#"
-                      className="block px-2 py-1 text-sm text-white data-[focus]:underline data-[focus]:text-white"
-                      onClick={() => {
-                        addGenreHandler(genre);
-                      }}
-                    >
-                     
-                    </a>
-                  </MenuItem>
-                ))} */}
-              </div>
-            </MenuItems>
-          </Menu>
-    
-          <button className='flex text-[18px] font-semibold justify-center w-[36px] h-[36px] border-[1px] border-[#343A40] bg-[#222426] rounded-md text-white shadow-sm '>
-            ...
-          </button>
-    </div>
-   </div>
-   {selectedMail ? selectedMail.map((message) => (
-    <CustomMail message={message}></CustomMail>
-   )):<div></div>}
-   </div>
+    {currentMail.length !== 0 ? <>
+  <MailBox currentMail={currentMail}></MailBox>
     <RightSection currentMail={currentMail}></RightSection>
-    </>:<div className='flex flex-col w-[136%]'>
+    </>
+    
+    :<div className='flex flex-col w-[136%]'>
       
       </div>}
     </div>

@@ -19,7 +19,7 @@ function RightSection({currentMail}) {
       <Details title="Name" data={currentMail.fromName}></Details>
       <Details title="Contact No" data='+54-9062827869'></Details>
       <Details title="Email ID" data={currentMail.fromEmail}></Details>
-      <Details title="Linkedin" data={'linkedin.com/in/priya1234'}></Details>
+      <Details title="Linkedin" data={'linkedin.com/in/' + currentMail.fromName}></Details>
       <Details title="Company Name" data="Reachinbox"></Details>
     </div>
     <div className='bg-[#23272C] p-[8px] text-white text-[14px] font-semibold rounded-lg'>Activities</div>

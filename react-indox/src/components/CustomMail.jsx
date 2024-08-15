@@ -23,9 +23,9 @@ const formatDate = (date) => {
 useEffect(() => {
     setCurrentDate(formatDate(new Date(message.sentAt)));
 
-}, []);
+}, [message]);
   return (
-    <div className='px-[24px] py-[12px] flex flex-col gap-[10px] '>
+    <div className='px-[24px] pt-[12px] flex flex-col gap-[10px] '>
      <div className='flex  justify-center items-center'>
     <hr className=' border-[#323440] h-[0.2px] w-[50%] '></hr>
     <p className="text-white text-[10px] font-semibold w-[50px] text-center">{currentDate.slice(0,6)}</p>

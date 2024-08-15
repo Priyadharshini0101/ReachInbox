@@ -33,7 +33,7 @@ useEffect(() => {
   return (
     <div className='m-4' onClick={() => openMail()}>  
     <hr className="  border-[#323440]"></hr> 
-    <div id={id} className={`flex flex-col px-[8px] py-[12px] gap-[8px] hover:border-l-[2.5px] hover:border-l  hover:border-blue-500 ${  id === currentMessage.threadId ? `border-blue-500 border-l border-l-[2.5px]`:``}` }>
+    <div id={id} className={`cursor-pointer flex flex-col px-[8px] py-[12px] gap-[8px] hover:bg-gray-800 ${  id === currentMessage.threadId ? `border-blue-500 border-l border-l-[2.5px]`:``}` }>
         <div className='flex justify-between'>
         <h1 className='text-[14px] font-medium text-white'>{email}</h1>
         <p className='text-[12px] text-gray-500'>{currentDate ? currentDate.slice(0,6):''}</p>

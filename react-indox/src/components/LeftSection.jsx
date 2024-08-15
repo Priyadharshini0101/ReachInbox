@@ -34,14 +34,26 @@ function LeftSection() {
       // Cleanup function to clear the interval when the component unmounts
        return () => clearInterval(interval);
   
+    
     },[])
+    
+  async function reloadHandler() {
+    const token = localStorage.getItem("token");
+  const res = await axios.get("https://hiring.reachinbox.xyz/api/v1/onebox/reset", {
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    console.log(res);
+  }
   
     
   return (
     <div className=' w-[35%] h-[90vh] border-e p-2.5 dark:border-[#343A40]  flex flex-col  dark:bg-black bg-white'> 
     <div className='justify-between flex  p-[10px] '>
 <h1 className='text-[#4285F4] font-bold text-[20px] gap-[4px]  inline-flex items-center '>All Inbox(s)<MdOutlineKeyboardArrowDown className="font-medium mt-1 cursor-pointer" /></h1>
-<button className="bg-[#25262b] w-[32px] h-[32px] border-[1px] p-[8px] border-gray-900 rounded-md" onClick={() => navigate('/inbox')}><img src="/src/assets/refresh.svg" className=''></img></button>
+<button className="bg-[#25262b] w-[32px] h-[32px] border-[1px] p-[8px] border-gray-900 rounded-md" onClick={() => reloadHandler()}><img src="/src/assets/refresh.svg" className=''></img></button>
     </div>
     <div className='flex px-[10px] text-[14px]  gap-[5px] items-center'>
       <h1 className='font-bold text-white'>{data.length}/25</h1>

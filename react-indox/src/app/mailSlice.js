@@ -13,9 +13,13 @@ export const mailSlice = createSlice({
         
              state.mails = action.payload
            },
+
+        deleteMail:(state) => {
+           state.mails = []
+        }
     },
     
 })
 
-export const {addMail} = mailSlice.actions
+export const {addMail,deleteMail} = mailSlice.actions
 export default mailSlice.reducer

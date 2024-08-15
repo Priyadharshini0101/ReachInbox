@@ -7,16 +7,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Details from './Details';
 import Activity from './Activity';
 import LeftSection from './LeftSection';
+import { useSelector } from 'react-redux';
 
-function RightSection() {
+function RightSection({currentMail}) {
+  // const currentMail = useSelector((state) => state.mails.mails)
   return (
  
-    <div className='w-72 h-screen border-l py-[25px] px-2.5 dark:border-[#343A40] gap-[25px] flex flex-col dark:bg-black bg-white'>
+    <div className='w-[35%] h-screen border-l py-[25px] px-2.5 dark:border-[#343A40] gap-[10px] flex flex-col dark:bg-black bg-white'>
     <div className='bg-[#23272C] p-[8px] text-white text-[14px] font-semibold rounded-lg'>Lead Details</div>
     <div className='flex flex-col gap-[20px] px-[12px] py-[8px] '>
-      <Details title="Name" data='Priyadharshini'></Details>
+      <Details title="Name" data={currentMail.fromName}></Details>
       <Details title="Contact No" data='+54-9062827869'></Details>
-      <Details title="Email ID" data='priya@gmail.com'></Details>
+      <Details title="Email ID" data={currentMail.fromEmail}></Details>
       <Details title="Linkedin" data={'linkedin.com/in/priya1234'}></Details>
       <Details title="Company Name" data="Reachinbox"></Details>
     </div>
@@ -30,7 +32,7 @@ function RightSection() {
       </div>
       <Activity step="1" img="/src/assets/sent.svg" detail="Sent 3rd, Feb"></Activity>
       <Activity step="2" img="/src/assets/open.svg" detail="Opened 5th, Feb"></Activity>
-      <Activity step="3" img="/src/assets/open.svg"></Activity>
+      <Activity step="3" img="/src/assets/open.svg" detail="Opened 5th, Feb"></Activity>
     </div>
     </div>   
   )

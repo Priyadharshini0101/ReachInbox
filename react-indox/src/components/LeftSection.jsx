@@ -6,11 +6,11 @@ import axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Details from './Details';
 import Activity from './Activity';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMail } from '../app/mailSlice';
 
 function LeftSection() {
-    const setRedux = (message) =>{
-        console.log(message)
-    }
+    
   const [data, setData] = useState([])
   const navigate = useNavigate()
     useEffect(() =>{
@@ -32,13 +32,13 @@ function LeftSection() {
       }, 1000);
     
       // Cleanup function to clear the interval when the component unmounts
-       clearInterval(interval);
+       return () => clearInterval(interval);
   
     },[])
   
-    console.log(data)
+    
   return (
-    <div className='ml-[56px] w-72 h-screen border-e p-2.5 dark:border-[#343A40]  flex flex-col  dark:bg-black bg-white'> 
+    <div className='ml-[56px] w-[35%] h-screen border-e p-2.5 dark:border-[#343A40]  flex flex-col  dark:bg-black bg-white'> 
     <div className='justify-between flex  p-[10px] '>
 <h1 className='text-[#4285F4] font-bold text-[20px] gap-[4px]  inline-flex items-center '>All Inbox(s)<MdOutlineKeyboardArrowDown className="font-medium mt-1" /></h1>
 <button className="bg-[#25262b] w-[32px] h-[32px] border-[1px] p-[8px] border-gray-900 rounded-md" onClick={() => navigate('/inbox')}><img src="/src/assets/refresh.svg" className=''></img></button>
@@ -66,7 +66,7 @@ function LeftSection() {
 </div>
 <div>
 {data ? data.map((message) =>(
-  <Message openMail={() => setRedux(message)} key={message.id} email={message.fromEmail} text={message.subject} date={message.sentAt}></Message>
+  <Message message={message} id={message.threadId} key={message.id} email={message.fromEmail} text={message.subject} date={message.sentAt}></Message>
 )):<div></div>} 
 <div className='px-[12px]'>
 

@@ -10,7 +10,7 @@ function Login() {
     if (token === null) {
       navigate("/login");
     } else {
-      navigate("/home");
+      navigate("/home");  
     }
   }, []);
 

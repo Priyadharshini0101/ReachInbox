@@ -29,7 +29,7 @@ import replyIcon from './reply.svg'
 import searchIcon from './search.svg'
 import sentIcon from './sent.svg'
 import setReminderIcon from './setReminder.svg'
-import viewListIcon from './viewList.svg'
+import viewListIcon from './viewlist.svg'
 import variableIcon from './variable.svg'
 import previewIcon from './preview.svg'
 

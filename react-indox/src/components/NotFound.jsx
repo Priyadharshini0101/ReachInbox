@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {  useLocation } from "react-router-dom";
-import { noMessageIcon } from "../assets";
+import { noMessageIcon } from "../assets"
 
 function Home() {
   const location = useLocation();
@@ -9,8 +9,9 @@ function Home() {
 
   useEffect(() => {
     if (token) {
-      localStorage.setItem("token", `Bearer ${token}`);
+      localStorage.setItem("token", `Bearer ${token}`);    
     }
+    
   }, [token]);
   return (
     <div className="h-screen pt-[64px] w-full gap-[50px] bg-white dark:bg-black flex justify-center  items-center  flex-col">

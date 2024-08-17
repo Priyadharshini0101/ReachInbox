@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
 import { SideBar,TopBar } from "./components/index.js";
+
 function App() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -11,7 +12,7 @@ function App() {
     if (token === null) {
       navigate("/login");
     } else {
-      navigate("/home");
+      navigate("/home");   
     }
   }, []);
 

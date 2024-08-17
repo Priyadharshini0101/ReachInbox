@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 import { BsLightningChargeFill } from "react-icons/bs";
 import {
@@ -13,14 +13,14 @@ import { IoMdCode } from "react-icons/io";
 import { IoLinkSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { TbSquareLetterA } from "react-icons/tb";
-function ReplyMail({modalIsOpen,currentMail,closeModal}) {
+function ReplyMail({ modalIsOpen, currentMail, closeModal }) {
   const [replyData, setReplyData] = useState({
     to: currentMail.fromEmail,
     from: currentMail.toEmail,
     subject: "",
     body: "",
-    inReplyTo:"",
-    references:"",
+    inReplyTo: "",
+    references: "",
   });
 
   const handleChange = (e) => {
@@ -31,23 +31,18 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
     }));
   };
 
-  
-  console.log(currentMail)
   const sendReply = async () => {
-  
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
         `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${currentMail.threadId}`,
         {
-        
           from: replyData.from,
           to: replyData.to,
-        
+
           subject: replyData.subject,
           body: replyData.body,
-     
-      },
+        },
 
         {
           headers: {
@@ -55,32 +50,27 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
           },
         }
       );
-      console.log(res)
-    } catch(error) {
-      
-      alert("Reply is not sent successfully")
-      console.log(error)
-     
+    } catch (error) {
+      alert("Reply is not sent successfully");
+      console.log(error);
     }
-    closeModal(false)
+    closeModal(false);
     setReplyData({
-      
-    to: currentMail.fromEmail,
-    from: currentMail.toEmail,
-    subject: "",
-    body: "",
-    inReplyTo:"",
-    references:"",
-  
-    })
-    
+      to: currentMail.fromEmail,
+      from: currentMail.toEmail,
+      subject: "",
+      body: "",
+      inReplyTo: "",
+      references: "",
+    });
   };
 
- 
   return (
-    
-
-<div className={` absolute bottom-0 p-2 flex justify-center items-end left-0  h-full w-full bg-gray-400/50 z-50 ${!modalIsOpen ? `hidden`:``}`}>
+    <div
+      className={` absolute bottom-0 p-2 flex justify-center items-end left-0  h-full w-full bg-gray-400/50 z-50 ${
+        !modalIsOpen ? `hidden` : ``
+      }`}
+    >
       <div className="bg-[#141517] rounded-lg border  w-[50%] border-[#41464B]">
         <div className="flex justify-between items-center px-4 bg-[#23272C] rounded-t-lg py-2 border-b border-[#41464B]">
           <div className="pl-4 text-sm">Reply</div>
@@ -170,10 +160,7 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
         </div>
       </div>
     </div>
-    
-    
-    
-  )
+  );
 }
 
-export default ReplyMail
+export default ReplyMail;

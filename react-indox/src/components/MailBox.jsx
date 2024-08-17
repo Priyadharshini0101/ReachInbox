@@ -16,6 +16,7 @@ import CustomMail from './CustomMail';
 import Modal  from 'react-modal'
 import ReplyMail from './ReplyMail';
 import DeleteMail from './DeleteMail';
+import Home from './Home'
 
 
 
@@ -77,10 +78,11 @@ function MailBox({currentMail}) {
   const [ currentMenu,setCurrentMenu] = useState(menu1[0])
   const [selectedMail,setSelectedMail] = useState([])
   const [selected,setSelected] = useState(false)
-   const [selectMove,setSelectMove] = useState(false)
+   const [loading,setLoading] = useState(false)
    useEffect(() =>{
-
     const fetch = async () => {
+      
+    setLoading(true) 
       try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
@@ -96,8 +98,10 @@ function MailBox({currentMail}) {
 } catch (error) {
     console.error("Error fetching data:", error);
 }
+setLoading(false)
 }
 fetch()
+
 
 },[currentMail])
 console.log(selectedMail)
@@ -128,32 +132,33 @@ useEffect(() => {
   }, [event]);
 
   return (
-    <div className='flex flex-col w-full  justify-between'>
-    <div className='flex flex-col '   >
-    <div  className='flex px-[24px] py-[16px] justify-between border-b  dark:border-[#343A40]' >
+    <>
+{!loading ?  <div className='bg-gray-50 dark:bg-black flex flex-col w-full  justify-between'>
+    <div className='flex flex-col'   >
+    <div  className='flex px-[24px]  bg-white dark:bg-black py-[16px] justify-between border-b  dark:border-[#343A40]' >
       <div className='flex flex-col '>
-     <h1 className='text-[14px] text-white font-semibold'>{currentMail.fromName}</h1>
-     <p className='text-[12px] text-gray-500'>{currentMail.fromEmail}</p>
+     <h1 className='text-[14px] text-black dark:text-white font-semibold'>{currentMail.fromName}</h1>
+     <p className='text-[12px] text-[#343A40] dark:text-gray-500'>{currentMail.fromEmail}</p>
      </div>
   <div className='flex gap-[25px]  ' >
     <Menu as="div" className=" relative  text-left">
-            <MenuButton  className="flex border-[1px] rounded-md border-[#343A40] bg-[#222426]  text-[16px] sm:text-[14px]  px-[16px]  py-[6px]   text-white shadow-sm hover:bg-[#6d6d6eb3]" onMouseOut={() => setSelected(false)} onClick={() => setSelected((selected) => !selected)} >
+            <MenuButton  className="flex border-[1px] rounded-md border-gray-300 dark:border-[#343A40] bg-[#222426]  text-[16px] sm:text-[14px]  px-[16px]  py-[6px] bg-white dark:bg-black text-black dark:text-white shadow-sm hover:bg-gray-100 dark:hover:bg-[#6d6d6eb3]" onMouseOut={() => setSelected(false)} onClick={() => setSelected((selected) => !selected)} >
               <div className='flex gap-[5px] items-center'>
             <div class={`inline-flex mr-[5px] items-center border-[#444234] justify-center w-3 h-3 ${currentMenu.color} rounded-full `}></div>
       <p>  {currentMenu.text}</p>
-      <MdOutlineKeyboardArrowDown className={`w-[24px] h-[24px]   ${!selected ? `transition ease-out`:  `rotate-180 transition ease-in` }`}></MdOutlineKeyboardArrowDown>
+      <MdOutlineKeyboardArrowDown className={`w-[24px] h-[24px] text-gray-500   ${!selected ? `transition ease-out`:  `rotate-180 transition ease-in` }`}></MdOutlineKeyboardArrowDown>
       </div>
             </MenuButton>
             <MenuItems
           transition
-              className={`absolute  bg-black right-0 z-10 w-52 shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in`}>
+              className={`absolute bg-white dark:bg-black right-0 z-10 w-52 shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in`}>
                 <div className="flex  flex-col  items-left">
                {menu1.map((menu) => (
                   <MenuItem onClick={() => setCurrentMenu(menu)}>       
                 
-              <div className='flex gap-[10px] items-center hover:bg-gray-500 py-2 px-2.5'>
+              <div className='flex gap-[10px] items-center hover:bg-gray-200 dark:hover:bg-gray-500 py-2 px-2.5'>
               <div class={`inline-flex mr-[5px] items-center border-[#444234] justify-center w-3 h-3 ${menu.color} rounded-full `}></div>
-           <p className='text-[14px]'>   {menu.text}</p>
+           <p className='text-[14px] dark:text-white text-black'>   {menu.text}</p>
              
             </div>
         
@@ -165,10 +170,10 @@ useEffect(() => {
           </Menu>
           
      <Menu as="div" className=" relative text-left">
-            <MenuButton className=" flex  border-[1px] border-[#343A40] bg-[#222426] rounded-md   text-[16px] sm:text-[14px]  px-[16px]  py-[6px]   text-white shadow-sm hover:bg-[#6d6d6eb3]">
+            <MenuButton className=" flex dark:text-white  border-[1px] border-gray-300 dark:border-[#343A40] bg-[#222426] rounded-md   text-[16px] sm:text-[14px]  px-[16px]  py-[6px]   text-black bg-white dark:bg-black shadow-sm  hover:bg-gray-100 dark:hover:bg-[#6d6d6eb3]">
               <div className='flex gap-[5px] items-center'>
        Move
-      <MdOutlineKeyboardArrowDown className={`w-[24px] h-[24px]`}></MdOutlineKeyboardArrowDown>
+      <MdOutlineKeyboardArrowDown className={`w-[24px] h-[24px] text-gray-500 `}></MdOutlineKeyboardArrowDown>
       </div>
             </MenuButton>
           </Menu>
@@ -177,23 +182,23 @@ useEffect(() => {
           <Menu as="div" className=" relative text-left">
             <MenuButton>
            
-          <button className='flex text-[18px] font-semibold justify-center w-[36px] h-[36px] border-[1px] border-[#343A40] bg-[#222426] rounded-md text-white shadow-sm '>
+          <button className='flex text-[18px] font-semibold justify-center w-[36px] h-[36px] border-[1px] border-gray-300 dark:border-[#343A40] text-gray-500  bg-white dark:bg-[#222426] rounded-md text-black dark:text-white shadow-sm  hover:bg-gray-100 dark:hover:bg-[#6d6d6eb3] '>
             ...
           </button>
             </MenuButton>
             <MenuItems
               transition
-              className="absolute  bg-black right-0 z-10 w-40  shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
-                <div className="flex  flex-col items-left">
+              className="absolute dark:bg-black bg-white right-0 z-10 w-40  shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
+                <div className="flex  flex-col   items-left">
                {menu2.map((menu) => (
                   <MenuItem onClick={() => {  if(menu.text === "Delete"){
                     openDeleteModal(true)
                   }}
                   }>       
                 
-              <div className='flex gap-[16px] items-center hover:bg-gray-500 py-2 px-4'>
+              <div className='flex gap-[16px] items-center hover:bg-gray-200 dark:hover:bg-gray-500 py-2 px-4'>
               <img src={menu.img}></img>
-        <p className='text-[12px] font-semibold text-[#D3D7DB]'>{menu.text}</p>
+        <p className='text-[12px] font-semibold text-black dark:text-[#D3D7DB]'>{menu.text}</p>
              
             </div>
         
@@ -220,10 +225,10 @@ useEffect(() => {
         )):<div></div>}
         {selectedMail.length > 1?
      <div className='flex  justify-center items-center py-[12px] px-[24px]'>
-    <hr className=' border-[#323440] h-[0.2px] w-[50%] '></hr>
+    <hr className='border-gray-300 dark:border-[#323440] h-[0.2px] w-[50%] '></hr>
 
-        <button onClick={() => setExpand((expand) => !expand)} className='text-white text-[10px] font-semibold w-[150px] text-center flex items-center justify-center gap-[5px] '><img src="/src/assets/expand.svg"></img>{!expand ? `View `:`Hide `} All <p className='text-[#5C7CFA]'>{selectedMail.length - 1} </p>replies</button>
-    <hr className=' border-[#323440] h-[0.2px] w-[50%]'></hr>
+        <button onClick={() => setExpand((expand) => !expand)} className='text-[#637381] dark: dark:text-white text-[10px] font-semibold w-[150px] text-center flex items-center justify-center gap-[5px] '><img src="/src/assets/expand.svg"></img>{!expand ? `View `:`Hide `} All <p className='text-[#5C7CFA]'>{selectedMail.length - 1} </p>replies</button>
+    <hr className='border-gray-300 dark:border-[#323440] h-[0.2px] w-[50%]'></hr>
     </div>
     :<div></div>}
     
@@ -236,6 +241,18 @@ useEffect(() => {
 <button className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC]  text-white font-semibold cursor-pointer rounded-md h-[40px] w-[136px] flex justify-center items-center gap-[10px]" onClick={() => openModal()}><img src="/src/assets/reply.svg"></img><p className='text-[14px] text-white font-semibold'>Reply</p></button>  
 </div>
 </div>
+:
+    
+        
+<div className="dark:bg-black bg-white flex h-screen w-full justify-center items-center">
+<div
+  className="inline-block h-[30px] w-[30px] text-blue-500 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+  role="status"
+></div>
+</div>
+
+}
+</>
   )
 }
 

@@ -14,6 +14,7 @@ import { current } from '@reduxjs/toolkit';
 import parse from 'html-react-parser'
 import CustomMail from './CustomMail';
 import MailBox from './MailBox';
+import Home from './Home';
 
 
 
@@ -80,16 +81,14 @@ fetch()
 
      
   return (
-    <div className='flex justify-between '> 
+    <div className='flex justify-between'> 
     <LeftSection></LeftSection>
     {currentMail.length !== 0 ? <>
   <MailBox currentMail={currentMail}></MailBox>
     <RightSection currentMail={currentMail}></RightSection>
     </>
     
-    :<div className='flex flex-col w-[136%]'>
-      
-      </div>}
+    :<Home></Home>}
     </div>
   
  

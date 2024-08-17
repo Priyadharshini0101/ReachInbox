@@ -1,17 +1,20 @@
 import React,{useState,useEffect} from 'react'
 import {FaMoon, FaSun} from 'react-icons/fa'
 import {MdOutlineKeyboardArrowDown} from 'react-icons/md'
-
+import { useDispatch } from 'react-redux';
+import { addTheme } from '../app/themeSlice';
 function TopBar() {
      
     const [darkMode, setDarkMode] = useState(true);
-
+     const dispatch = useDispatch()
     useEffect(() => {
         const root = window.document.documentElement;
         const color = darkMode ? 'light' : 'dark';
         const color1 = darkMode ? 'dark' : 'light';
         root.classList.remove(color);
         root.classList.add(color1);
+        dispatch(addTheme(color1));    
+        console.log(typeof window.document.documentElement.classList.value)
     }, [darkMode]);
 
 

@@ -24,7 +24,7 @@ function Home() {
        }
     }, [token]);
   return (
-    <div className='h-[90vh] gap-[50px] bg-white dark:bg-black flex justify-center  items-center  flex-col'>
+    <div className='h-screen w-full gap-[50px] bg-white dark:bg-black flex justify-center  items-center  flex-col'>
       <img src="/src/assets/nomessage.svg"></img>
       <div className='gap-[25px] flex flex-col items-center'>
         <h1 className='font-bold text-black dark:text-white text-[24px]'>It’s the beginning of a legendary sales pipeline</h1>

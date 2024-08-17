@@ -41,15 +41,12 @@ function ReplyMail({modalIsOpen,currentMail,closeModal}) {
         `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${currentMail.threadId}`,
         {
         
-          toName:currentMail.toName,
-          fromName:currentMail.fromName,
-          to: replyData.to,
-          references:replyData.references,
           from: replyData.from,
+          to: replyData.to,
+        
           subject: replyData.subject,
           body: replyData.body,
-          inReplyTo:replyData.inReplyTo
-        
+     
       },
 
         {

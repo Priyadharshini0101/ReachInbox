@@ -10,7 +10,6 @@ import LeftSection from './LeftSection';
 import { useSelector } from 'react-redux';
 
 function RightSection({currentMail}) {
-  // const currentMail = useSelector((state) => state.mails.mails)
   return (
  
     <div className='w-[35%] border-l py-[25px] px-2.5 dark:border-[#343A40] gap-[10px] flex flex-col dark:bg-black bg-white'>

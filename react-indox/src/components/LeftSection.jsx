@@ -15,9 +15,9 @@ function LeftSection() {
   useEffect(() =>{
     console.log(theme)
     if(theme === "dark"){
-    setRefresh("/src/assets/refresh_dark.svg")
+    setRefresh("/src/assets/refresh.svg")
     }else{
-      setRefresh("/src/assets/refresh.svg")
+      setRefresh("/src/assets/refresh_dark.svg")
     }
   },[theme])
     

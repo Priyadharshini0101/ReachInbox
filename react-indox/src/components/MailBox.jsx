@@ -189,15 +189,15 @@ useEffect(() => {
             <MenuItems
               transition
               className="absolute dark:bg-black bg-white right-0 z-10 w-40  shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
-                <div className="flex  flex-col   items-left">
+                <div className="flex  flex-col items-left">
                {menu2.map((menu) => (
                   <MenuItem onClick={() => {  if(menu.text === "Delete"){
                     openDeleteModal(true)
                   }}
                   }>       
                 
-              <div className='flex gap-[16px] items-center hover:bg-gray-200 dark:hover:bg-gray-500 py-2 px-4'>
-              <img src={menu.img}></img>
+              <div className='flex gap-[16px] items-center  hover:bg-gray-200 dark:hover:bg-gray-500 py-2 px-4'>
+              <img src={menu.img} className=''></img>
         <p className='text-[12px] font-semibold text-black dark:text-[#D3D7DB]'>{menu.text}</p>
              
             </div>

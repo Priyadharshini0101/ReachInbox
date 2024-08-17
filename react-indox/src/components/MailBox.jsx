@@ -31,6 +31,10 @@ function MailBox({ currentMail }) {
       text: "Meeting Completed",
     },
     {
+      color:`bg-[#9C62E6]`,
+      text:"Meeting Booked"
+    },
+    {
       color: `bg-[#57E0A6]`,
       text: "Interested",
     },
@@ -110,8 +114,6 @@ function MailBox({ currentMail }) {
   }, [event]);
 
   return (
-    <>
-      {!loading ? (
         <div className="bg-gray-50 h-screen overflow-auto dark:bg-black flex flex-col w-full pt-[64px]  justify-between">
           <div className="flex flex-col">
             <div className="flex px-[24px]  bg-white dark:bg-black py-[16px] justify-between border-b  dark:border-[#343A40]">
@@ -209,7 +211,10 @@ function MailBox({ currentMail }) {
                 </Menu>
               </div>
             </div>
-            {selectedMail ? (
+ {!loading ? 
+ <>
+  {selectedMail ? 
+     (
               selectedMail.map((message, index) =>
                 expand ? (
                   <CustomMail message={message}></CustomMail>
@@ -222,7 +227,8 @@ function MailBox({ currentMail }) {
             ) : (
               <div></div>
             )}
-            {selectedMail.length > 1 ? (
+          
+      {selectedMail.length > 1 ? (
               <div className="flex  justify-center items-center py-[12px] px-[24px]">
                 <hr className="border-gray-300 dark:border-[#323440] h-[0.2px] w-[50%] "></hr>
 
@@ -251,7 +257,15 @@ function MailBox({ currentMail }) {
               modalIsOpen={modalIsOpenDelete}
               closeModal={closeDeleteModal}
             ></DeleteMail>
-          </div>
+         </>   :
+        <div className="dark:bg-black bg-white flex h-screen w-full justify-center items-center">
+          <div
+            className="inline-block h-[30px] w-[30px] text-blue-500 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          ></div>
+        </div> 
+           }
+      
           <div className="p-[24px] ">
             <button
               className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC]  text-white font-semibold cursor-pointer rounded-md h-[40px] w-[136px] flex justify-center items-center gap-[10px]"
@@ -260,17 +274,7 @@ function MailBox({ currentMail }) {
               <img src={replyIcon}></img>
               <p className="text-[14px] text-white font-semibold">Reply</p>
             </button>
-          </div>
-        </div>
-      ) : (
-        <div className="dark:bg-black bg-white flex h-screen w-full justify-center items-center">
-          <div
-            className="inline-block h-[30px] w-[30px] text-blue-500 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-            role="status"
-          ></div>
-        </div>
-      )}
-    </>
+          </div></div></div>
   );
 }
 

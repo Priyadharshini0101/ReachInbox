@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import parse from "html-react-parser";
 import { useSelector, useDispatch } from "react-redux";
 import { addMail } from "../app/mailSlice";
+import { messageIcon } from "../assets";
 function Message({ email, text, date, id, message }) {
   const dispatch = useDispatch();
 
@@ -69,7 +70,7 @@ function Message({ email, text, date, id, message }) {
           <button className="text-[#637381] dark:text-white font-semibold text-[10px] px-[8px] py-[3px] bg-[#F0F0F0] dark:bg-[#2D3833] rounded-lg">
             <img
               class=" inline-flex  mr-[5px] items-center justify-center w-[12px] h-[12px]"
-              src={message}
+              src={messageIcon}
             ></img>
             Campaign Name
           </button>

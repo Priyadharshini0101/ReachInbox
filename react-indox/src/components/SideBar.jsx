@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { emailIcon, graphIcon, homeIcon, inboxIcon, logoIconDark, logoIconWhite, messageIcon, searchIcon, viewListIcon } from "../assets";
 function SideBar() {
   const theme = useSelector((state) => state.themes.mode);
-  const [currentPage,setCurrentPage] = useState("");
+  const [currentPage,setCurrentPage] = useState("Home");
   return (
     <>
       <Helmet>

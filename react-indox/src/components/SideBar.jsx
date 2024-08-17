@@ -1,18 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { emailIcon, graphIcon, homeIcon, inboxIcon, logoIconDark, logoIconWhite, messageIcon, searchIcon, viewListIcon } from "../assets";
 function SideBar() {
   const theme = useSelector((state) => state.themes.mode);
+  const [currentPage,setCurrentPage] = useState("");
   return (
+    <>
+      <Helmet>
+        <title>{'ReachInbox - '+ currentPage}</title>
+        <meta name="description" content={``}></meta>
+      </Helmet>
     <div class="dark:bg-[#101113] bg-white z-50 w-[56px]  border-e  border-gray-100 dark:border-[#343A40]">
       <div class="flex flex-col h-full items-center justify-between">
         <div class="py-[24px] px-[8px]">
           <img src={theme === "light"?logoIconDark:logoIconWhite}></img>
         </div>
         <div className=" flex flex-col  items-center  gap-[40px]">
-          <Link to="/home">
+          <Link to="/home" onClick={() =>setCurrentPage("Home")}>
             <div class="w-[32px] h-[32px] items-center inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={homeIcon}
@@ -20,7 +27,7 @@ function SideBar() {
               ></img>
             </div>
           </Link>
-          <Link to="/home">
+          <Link to="/home" onClick={() =>setCurrentPage("Search")}>
             <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={searchIcon}
@@ -29,7 +36,7 @@ function SideBar() {
             </div>
           </Link>
 
-          <Link to="/home">
+          <Link to="/home" onClick={() =>setCurrentPage("Email")}>
             <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={emailIcon}
@@ -37,7 +44,7 @@ function SideBar() {
               ></img>
             </div>
           </Link>
-          <Link to="/home">
+          <Link to="/home" onClick={() =>setCurrentPage("Message")}>
             <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={messageIcon}
@@ -46,7 +53,7 @@ function SideBar() {
             </div>
           </Link>
 
-          <Link to="/home">
+          <Link to="/home" onClick={() =>setCurrentPage("ViewList")}>
             <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={viewListIcon}
@@ -54,7 +61,7 @@ function SideBar() {
               ></img>
             </div>
           </Link>
-          <Link to="/inbox">
+          <Link to="/inbox" onClick={() =>setCurrentPage("Inbox")}>
             <div
               class={`relative w-[32px] h-[32px] items-center inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030]  hover:bg-gray-100 ${
                 useLocation().pathname === "/inbox"
@@ -72,7 +79,7 @@ function SideBar() {
             </div>
           </Link>
 
-          <Link to="/home">
+          <Link to="/home" onClick={() =>setCurrentPage("Graph")}>
             <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={graphIcon}
@@ -84,6 +91,7 @@ function SideBar() {
         <div className="py-1 px-3 m-2.5 bg-blue-500 rounded-full ">P</div>
       </div>
     </div>
+    </>
   );
 }
 

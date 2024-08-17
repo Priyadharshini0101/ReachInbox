@@ -1,6 +1,7 @@
 import React, { useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { googleIcon, logoIcon } from "../assets";
+import { Helmet } from "react-helmet";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,6 +19,11 @@ function Login() {
   };
 
   return (
+     <>
+      <Helmet>
+        <title>{'ReachInbox - Sign Up'}</title>
+        <meta name="description" content={``}></meta>
+      </Helmet>
     <div className="flex flex-col items-center h-screen justify-between">
       <img src={logoIcon} className="p-10"></img>
 
@@ -50,6 +56,7 @@ function Login() {
         © 2023 Reactindox. All rights reserved.
       </h1>
     </div>
+    </>
   );
 }
 

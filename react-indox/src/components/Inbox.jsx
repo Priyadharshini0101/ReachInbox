@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import {MailBox,Home,LeftSection,RightSection} from './index.js'
+import {MailBox,NotFound,LeftSection,RightSection} from './index.js'
 function Inbox() {
   const currentMail = useSelector((state) => state.mails.mails);
   const [selectedMail, setSelectedMail] = useState([]);
@@ -34,7 +34,7 @@ function Inbox() {
           <RightSection currentMail={currentMail}></RightSection>
         </>
       ) : (
-        <Home></Home>
+      <NotFound></NotFound>
       )}
     </div>
   );

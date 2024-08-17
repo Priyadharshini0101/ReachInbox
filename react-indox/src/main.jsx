@@ -5,7 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
-import {Home,Login,Inbox} from './components/index.js'
+import {Login,Inbox, NotFound} from './components/index.js'
 
 const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/home",
-        element: <Home />,
+        element: <NotFound />,
       },
       {
         path: "/inbox",

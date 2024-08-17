@@ -2,7 +2,7 @@ import Activity from "./Activity";
 import CustomMail from "./CustomMail";
 import DeleteMail from "./DeleteMail";
 import Details from "./Details";
-import Home from "./Home";
+import NotFound from "./NotFound";
 import Inbox from "./Inbox";
 import LeftSection from "./LeftSection";
 import Login from "./Login";
@@ -13,4 +13,4 @@ import RightSection from "./RightSection";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
 
-export {Activity,CustomMail,DeleteMail,Details,Home,Inbox,LeftSection,Login,MailBox,Message,ReplyMail,RightSection,SideBar,TopBar}
+export {Activity,CustomMail,DeleteMail,Details,NotFound,Inbox,LeftSection,Login,MailBox,Message,ReplyMail,RightSection,SideBar,TopBar}

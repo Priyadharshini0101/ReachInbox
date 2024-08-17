@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import {  useLocation } from "react-router-dom";
+import { noMessageIcon } from "../assets";
 
 function Home() {
   const location = useLocation();
@@ -12,8 +13,8 @@ function Home() {
     }
   }, [token]);
   return (
-    <div className="h-screen w-full gap-[50px] bg-white dark:bg-black flex justify-center  items-center  flex-col">
-      <img src="/src/assets/nomessage.svg"></img>
+    <div className="h-screen pt-[64px] w-full gap-[50px] bg-white dark:bg-black flex justify-center  items-center  flex-col">
+      <img src={noMessageIcon}></img>
       <div className="gap-[25px] flex flex-col items-center">
         <h1 className="font-bold text-black dark:text-white text-[24px]">
           It’s the beginning of a legendary sales pipeline

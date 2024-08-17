@@ -2,22 +2,12 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import {Message} from './index.js'
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios from "axios"; 
 import { useSelector } from "react-redux";
+import { refreshIconDark,refresh } from "../assets/index.js";
 function LeftSection() {
-  const [refresh, setRefresh] = useState("/src/assets/refresh.svg");
-  const theme = useSelector((state) => state.themes.mode);
-  useEffect(() => {
-    if (theme === "dark") {
-      setRefresh("/src/assets/refresh.svg");
-    } else {
-      setRefresh("/src/assets/refresh_dark.svg");
-    }
-  }, [theme]);
-
+  const theme = useSelector((state) => state.themes.mode); 
   const [data, setData] = useState([]);
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -55,7 +45,7 @@ function LeftSection() {
   };
 
   return (
-    <div className=" w-[35%] border-e p-2.5 dark:border-[#343A40]  flex flex-col dark:bg-black bg-white">
+    <div className=" w-[35%] border-e p-2.5 pt-[64px] dark:border-[#343A40]  flex flex-col dark:bg-black bg-white">
       <div className="justify-between flex  p-[10px] ">
         <h1 className="text-[#4285F4] font-bold text-[20px] gap-[4px]  inline-flex items-center ">
           All Inbox(s)
@@ -65,7 +55,7 @@ function LeftSection() {
           className="dark:bg-[#25262b] w-[32px] h-[32px] border-[1px] p-[8px] border-[#DFE3E8] dark:border-gray-900 rounded-md"
           onClick={() => reload()}
         >
-          <img src={refresh} className=""></img>
+          <img src={theme === "light"?refreshIconDark:refresh} className=""></img>
         </button>
       </div>
       <div className="flex px-[10px] text-[14px]  gap-[5px] items-center">

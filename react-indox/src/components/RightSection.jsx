@@ -1,8 +1,9 @@
 import React from "react";
 import {Details,Activity} from './index.js'
+import { openIcon, sentIcon } from "../assets/index.js";
 function RightSection({ currentMail }) {
   return (
-    <div className="w-[35%] border-l py-[25px] px-2.5 dark:border-[#343A40] gap-[10px] flex flex-col dark:bg-black bg-white">
+    <div className="w-[35%] border-l pb-[25px] pt-[75px] px-2.5 dark:border-[#343A40] gap-[10px] flex flex-col dark:bg-black bg-white">
       <div className="bg-[#ECEFF3] dark:bg-[#23272C] p-[8px] text-white text-[14px] font-semibold rounded-lg">
         Lead Details
       </div>
@@ -30,17 +31,17 @@ function RightSection({ currentMail }) {
         </div>
         <Activity
           step="1"
-          img="/src/assets/sent.svg"
+          img={sentIcon}
           detail="Sent 3rd, Feb"
         ></Activity>
         <Activity
           step="2"
-          img="/src/assets/open.svg"
+          img={openIcon}
           detail="Opened 5th, Feb"
         ></Activity>
         <Activity
           step="3"
-          img="/src/assets/open.svg"
+          img={openIcon}
           detail="Opened 5th, Feb"
         ></Activity>
       </div>

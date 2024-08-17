@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-
-import { BsLightningChargeFill } from "react-icons/bs";
-import {
-  FaCaretDown,
-  FaEye,
-  FaImage,
-  FaRegSmile,
-  FaUserMinus,
-} from "react-icons/fa";
-import { IoMdCode } from "react-icons/io";
-import { IoLinkSharp } from "react-icons/io5";
+import {FaCaretDown } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import { TbSquareLetterA } from "react-icons/tb";
+import { imageIcon, linkIcon, personRemoveIcon, previewIcon, sentimentSatisfiedIcon, spellCheckIcon, unfoldMore, variableIcon } from "../assets";
 function ReplyMail({ modalIsOpen, currentMail, closeModal }) {
   const [replyData, setReplyData] = useState({
     to: currentMail.fromEmail,
@@ -129,32 +119,32 @@ function ReplyMail({ modalIsOpen, currentMail, closeModal }) {
           >
             Send <FaCaretDown className="ml-4" />
           </div>
-          <div className="flex items-center text-[#ADADAD]">
-            <BsLightningChargeFill className="mr-3" />
+          <div className="flex items-center gap-[10px] text-[#ADADAD]">
+            <img src={variableIcon}></img>
             Variables
           </div>
-          <div className="flex items-center text-[#ADADAD]">
-            <FaEye className="mr-3" />
+          <div className="flex gap-[10px] items-center text-[#ADADAD]">
+          <img src={previewIcon}></img>    
             Preview Email
           </div>
-          <div className="flex space-x-4 text-xl text-[#ADADAD]">
+          <div className="flex space-x-4 items-center text-xl text-[#ADADAD]">
             <div>
-              <TbSquareLetterA />
+              <img src={spellCheckIcon}></img> 
             </div>
             <div>
-              <IoLinkSharp />
+              <img src={linkIcon}></img>
             </div>
             <div>
-              <FaImage />
+              <img src={imageIcon}></img>
             </div>
             <div>
-              <FaRegSmile />
+            <img src={sentimentSatisfiedIcon}></img>
             </div>
             <div>
-              <FaUserMinus />
+              <img src={personRemoveIcon}></img>
             </div>
             <div>
-              <IoMdCode />
+            <img src={unfoldMore}></img>
             </div>
           </div>
         </div>

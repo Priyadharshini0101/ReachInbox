@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <div className="flex overflow-hidden">
+    <div className="flex">
       {token ? <SideBar></SideBar> : <></>}
       <div className="w-full">
         {token ? <TopBar></TopBar> : <></>}

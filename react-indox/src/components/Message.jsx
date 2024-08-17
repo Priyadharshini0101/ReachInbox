@@ -69,7 +69,7 @@ function Message({ email, text, date, id, message }) {
           <button className="text-[#637381] dark:text-white font-semibold text-[10px] px-[8px] py-[3px] bg-[#F0F0F0] dark:bg-[#2D3833] rounded-lg">
             <img
               class=" inline-flex  mr-[5px] items-center justify-center w-[12px] h-[12px]"
-              src="/src/assets/message.svg"
+              src={message}
             ></img>
             Campaign Name
           </button>

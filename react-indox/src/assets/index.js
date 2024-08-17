@@ -1,11 +1,13 @@
 import deleteIcon from './delete.svg';
-import editLeadIcon from './editLead'
+import editLeadIcon from './editLead.svg'
 import emailIcon from './email.svg'
 import expandIcon from './expand.svg'
 import googleIcon from './google.svg'
 import graphIcon from './graph.svg'
 import homeIcon from  './home.svg'
+import imageIcon from './image.svg'
 import inboxIcon from './inbox.svg'
+import linkIcon from './link.svg'
 import logoIconDark  from  './logo_dark.svg'
 import logoIconWhite from './logo_white.svg'
 import logoIcon from './logo.svg'
@@ -15,6 +17,10 @@ import markAsReadIcon from './markAsRead.svg'
 import messageIcon from './message.svg'
 import noMessageIcon from './nomessage.svg'
 import openIcon from './open.svg'
+import personRemoveIcon from './person_remove.svg'
+import sentimentSatisfiedIcon from './sentiment_satisfied.svg'
+import spellCheckIcon from './spellCheck.svg'
+import unfoldMore from './unfold_more.svg'
 import react from './react.svg'
 import refreshIconDark from './refresh_dark.svg'
 import refresh from './refresh.svg'
@@ -26,3 +32,9 @@ import setReminderIcon from './setReminder.svg'
 import viewListIcon from './viewList.svg'
 import variableIcon from './variable.svg'
 import previewIcon from './preview.svg'
+
+export {deleteIcon,editLeadIcon,emailIcon,expandIcon,googleIcon,graphIcon,homeIcon,imageIcon,
+    inboxIcon,linkIcon,logoIcon,logoIconDark,logoIconWhite,mailIcon,mailIconDark,markAsReadIcon,noMessageIcon,
+    messageIcon,openIcon,personRemoveIcon,searchIcon,sentimentSatisfiedIcon,spellCheckIcon,unfoldMore,react,refresh,
+    refreshIconDark,removeLeadIcon,replyIcon,sentIcon,setReminderIcon,viewListIcon,variableIcon,previewIcon
+}

@@ -1,5 +1,6 @@
 import React, { useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { googleIcon, logoIcon } from "../assets";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function Login() {
 
   return (
     <div className="flex flex-col items-center h-screen justify-between">
-      <img src="/src/assets/logo.svg" className="p-10"></img>
+      <img src={logoIcon} className="p-10"></img>
 
       <div className="flex flex-col py-[25px] justify-between border-[#707172] rounded-lg border-[1px] px-12 gap-[50px]   ">
         <div className="flex flex-col gap-[25px] items-center">
@@ -29,7 +30,7 @@ function Login() {
             className="text-[16px] rounded-md border-[1px] border-[#CCCCCC] py-2.5 px-24 flex items-center justify-center gap-[10px] cursor-pointer  hover:bg-[#ffffffbf] "
             onClick={() => googleSignIn()}
           >
-            <img src="/src/assets/google.svg"></img>Sign Up with Google
+            <img src={googleIcon}></img>Sign Up with Google
           </button>
         </div>
         <div className="flex flex-col items-center gap-[25px]">

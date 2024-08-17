@@ -16,8 +16,8 @@ function TopBar() {
   }, [darkMode]);
 
   return (
-    <div className="flex w-full h-[64px] bg-white dark:bg-[#1F1F1F] border-b border-gray-100 dark:border-[#343A40] justify-between items-center px-[25px]">
-      <h1 className="font-bold text-[16px] text-black dark:text-white">
+    <div className="absolute  left-[-15px] flex w-full h-[64px] bg-white dark:bg-[#1F1F1F] border-b border-gray-100 dark:border-[#343A40] justify-between items-center pr-[25px] pl-[100px]">
+      <h1 className="font-bold  text-[16px] text-black dark:text-white">
         Onebox
       </h1>
       <div className="flex gap-[25px]">

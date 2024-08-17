@@ -3,6 +3,7 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import axios from "axios";
 import {CustomMail,ReplyMail,DeleteMail} from './index.js'
+import { deleteIcon, editLeadIcon, expandIcon, markAsReadIcon, removeLeadIcon, replyIcon, setReminderIcon } from "../assets/index.js";
 
 function MailBox({ currentMail }) {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -41,23 +42,23 @@ function MailBox({ currentMail }) {
 
   const menu2 = [
     {
-      img: "/src/assets/markAsRead.svg",
+      img: markAsReadIcon,
       text: "Mark as unread",
     },
     {
-      img: "/src/assets/editLead.svg",
+      img: editLeadIcon,
       text: "Edit lead",
     },
     {
-      img: "/src/assets/removeLead.svg",
+      img: removeLeadIcon,
       text: "Remove lead",
     },
     {
-      img: "/src/assets/setReminder.svg",
+      img: setReminderIcon,
       text: "Set reminder",
     },
     {
-      img: "/src/assets/delete.svg",
+      img: deleteIcon,
       text: "Delete",
     },
   ];
@@ -111,7 +112,7 @@ function MailBox({ currentMail }) {
   return (
     <>
       {!loading ? (
-        <div className="bg-gray-50 dark:bg-black flex flex-col w-full  justify-between">
+        <div className="bg-gray-50 h-screen overflow-auto dark:bg-black flex flex-col w-full pt-[64px]  justify-between">
           <div className="flex flex-col">
             <div className="flex px-[24px]  bg-white dark:bg-black py-[16px] justify-between border-b  dark:border-[#343A40]">
               <div className="flex flex-col ">
@@ -229,7 +230,7 @@ function MailBox({ currentMail }) {
                   onClick={() => setExpand((expand) => !expand)}
                   className="text-[#637381] dark: dark:text-white text-[10px] font-semibold w-[150px] text-center flex items-center justify-center gap-[5px] "
                 >
-                  <img src="/src/assets/expand.svg"></img>
+                  <img src={expandIcon}></img>
                   {!expand ? `View ` : `Hide `} All{" "}
                   <p className="text-[#5C7CFA]">{selectedMail.length - 1} </p>
                   replies
@@ -256,7 +257,7 @@ function MailBox({ currentMail }) {
               className="bg-gradient-to-r from-[#4B63DD] to-[#0524BFFC]  text-white font-semibold cursor-pointer rounded-md h-[40px] w-[136px] flex justify-center items-center gap-[10px]"
               onClick={() => openModal()}
             >
-              <img src="/src/assets/reply.svg"></img>
+              <img src={replyIcon}></img>
               <p className="text-[14px] text-white font-semibold">Reply</p>
             </button>
           </div>

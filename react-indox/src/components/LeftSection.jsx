@@ -88,7 +88,7 @@ function LeftSection() {
           <MdOutlineKeyboardArrowDown className="w-[18px] h-[18px] cursor-pointer" />
         </h1>
       </div>
-      <div className="p-[12px] ">
+      <div className="p-[6px] ">
         <hr className="  border-transparent dark:border-[#323440]"></hr>
       </div>
 

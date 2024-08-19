@@ -3,6 +3,15 @@ import parse from "html-react-parser";
 import { useSelector, useDispatch } from "react-redux";
 import { addMail } from "../app/mailSlice";
 import { messageIcon } from "../assets";
+import PropTypes from 'prop-types'
+
+Message.propTypes = {
+ email:PropTypes.string,
+ text:PropTypes.string,
+ date:PropTypes.string,
+ id:PropTypes.string,
+ message:PropTypes.string
+}
 function Message({ email, text, date, id, message }) {
   const dispatch = useDispatch();
 
@@ -64,12 +73,12 @@ function Message({ email, text, date, id, message }) {
         </p>
         <div className="flex gap-[25px] py-[5px]">
           <button className="text-[#57E0A6] font-semibold text-[10px] px-[8px] py-[3px] bg-[#F0F0F0] dark:bg-[#2D3833] rounded-lg">
-            <div class=" inline-flex mr-[5px] items-center justify-center w-2 h-2 bg-[#57E0A6] rounded-full "></div>
+            <div className=" inline-flex mr-[5px] items-center justify-center w-2 h-2 bg-[#57E0A6] rounded-full "></div>
             Interested
           </button>
           <button className="text-[#637381] dark:text-white font-semibold text-[10px] px-[8px] py-[3px] bg-[#F0F0F0] dark:bg-[#2D3833] rounded-lg">
             <img
-              class=" inline-flex  mr-[5px] items-center justify-center w-[12px] h-[12px]"
+              className=" inline-flex  mr-[5px] items-center justify-center w-[12px] h-[12px]"
               src={messageIcon}
             ></img>
             Campaign Name

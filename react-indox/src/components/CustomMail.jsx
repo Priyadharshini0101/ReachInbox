@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import parse from "html-react-parser";
+import PropTypes from "prop-types"
+
+CustomMail.propTypes = {
+  message: PropTypes.object,
+};
 
 function CustomMail({ message }) {
   const [currentDate, setCurrentDate] = useState("");

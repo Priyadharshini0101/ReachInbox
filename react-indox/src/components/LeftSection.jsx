@@ -34,7 +34,7 @@ function LeftSection() {
   const reload = async () => {
     setLoading(true);
     const token = localStorage.getItem("token");
-    const res = await axios.get(
+    await axios.get(
       "https://hiring.reachinbox.xyz/api/v1/onebox/reset",
       {
         headers: {
@@ -76,7 +76,7 @@ function LeftSection() {
       </div>
       <div className="flex justify-between px-2.5 ">
         <div>
-          <div class="my-2 inline-flex mr-[5px] items-center justify-center w-6 h-6 text-xs font-semibold  bg-gray-200 dark:bg-[#222426] text-[#5C7CFA] rounded-full ">
+          <div className="my-2 inline-flex mr-[5px] items-center justify-center w-6 h-6 text-xs font-semibold  bg-gray-200 dark:bg-[#222426] text-[#5C7CFA] rounded-full ">
             {data.length}
           </div>
           <h1 className="text-black dark:text-[#e6e6e6]  text-[14px] font-semibold inline-flex items-center">

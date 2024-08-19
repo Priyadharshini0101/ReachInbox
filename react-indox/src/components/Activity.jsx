@@ -1,7 +1,17 @@
-import React from "react";
+import React from 'react'
 import { useSelector } from "react-redux";
-import { mailIcon, mailIconDark} from '../assets/index.js'
-function Activity({ step, img, detail }) {
+import { mailIcon, mailIconDark, react} from '../assets/index.js'
+import PropTypes from 'prop-types';
+
+
+  Activity.propTypes = {
+    step: PropTypes.number,
+    img: PropTypes.string,
+    detail: PropTypes.string,
+  };
+
+
+function Activity({ step = 0, img = {react}, detail="Message Sent" }) {
   const theme = useSelector((state) => state.themes.mode);
 
   return (

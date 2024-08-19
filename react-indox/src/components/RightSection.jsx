@@ -1,6 +1,12 @@
 import React from "react";
 import {Details,Activity} from './index.js'
 import { openIcon, sentIcon } from "../assets/index.js";
+import PropTypes from 'prop-types'
+
+RightSection.propTypes = {
+  currentMail:PropTypes.object,
+}
+
 function RightSection({ currentMail }) {
   return (
     <div className="w-[35%] border-l pb-[25px] pt-[75px] px-2.5 dark:border-[#343A40] gap-[10px] flex flex-col dark:bg-black bg-white">
@@ -30,17 +36,17 @@ function RightSection({ currentMail }) {
           <h1>5 Days in Sequence</h1>
         </div>
         <Activity
-          step="1"
+          step={1}
           img={sentIcon}
           detail="Sent 3rd, Feb"
         ></Activity>
         <Activity
-          step="2"
+          step={2}
           img={openIcon}
           detail="Opened 5th, Feb"
         ></Activity>
         <Activity
-          step="3"
+          step={3}
           img={openIcon}
           detail="Opened 5th, Feb"
         ></Activity>

@@ -4,7 +4,11 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import axios from "axios";
 import {CustomMail,ReplyMail,DeleteMail} from './index.js'
 import { deleteIcon, editLeadIcon, expandIcon, markAsReadIcon, removeLeadIcon, replyIcon, setReminderIcon } from "../assets/index.js";
+import PropTypes from 'prop-types'
 
+MailBox.propTypes = {
+  currentMail:PropTypes.object
+}
 function MailBox({ currentMail }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsOpenDelete, setModalIsOpenDelete] = useState(false);
@@ -134,7 +138,7 @@ function MailBox({ currentMail }) {
                   >
                     <div className="flex gap-[5px] items-center">
                       <div
-                        class={`inline-flex mr-[5px] items-center border-[#444234] justify-center w-3 h-3 ${currentMenu.color} rounded-full `}
+                        className={`inline-flex mr-[5px] items-center border-[#444234] justify-center w-3 h-3 ${currentMenu.color} rounded-full `}
                       ></div>
                       <p> {currentMenu.text}</p>
                       <MdOutlineKeyboardArrowDown
@@ -151,11 +155,11 @@ function MailBox({ currentMail }) {
                     className={`absolute bg-white dark:bg-black right-0 z-10 w-52 shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in`}
                   >
                     <div className="flex  flex-col  items-left">
-                      {menu1.map((menu) => (
-                        <MenuItem onClick={() => setCurrentMenu(menu)}>
+                      {menu1.map((menu,index) => (
+                        <MenuItem onClick={() => setCurrentMenu(menu)} key={index}>
                           <div className="flex gap-[10px] items-center hover:bg-gray-200 dark:hover:bg-gray-500 py-2 px-2.5">
                             <div
-                              class={`inline-flex mr-[5px] items-center border-[#444234] justify-center w-3 h-3 ${menu.color} rounded-full `}
+                              className={`inline-flex mr-[5px] items-center border-[#444234] justify-center w-3 h-3 ${menu.color} rounded-full `}
                             ></div>
                             <p className="text-[14px] dark:text-white text-black">
                               {" "}
@@ -190,8 +194,9 @@ function MailBox({ currentMail }) {
                     className="absolute dark:bg-black bg-white right-0 z-10 w-40  shadow-lg ring-1 ring-inset ring-gray-300  transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                   >
                     <div className="flex  flex-col items-left">
-                      {menu2.map((menu) => (
+                      {menu2.map((menu,index) => (
                         <MenuItem
+                        key={index}
                           onClick={() => {
                             if (menu.text === "Delete") {
                               openDeleteModal(true);
@@ -217,9 +222,9 @@ function MailBox({ currentMail }) {
      (
               selectedMail.map((message, index) =>
                 expand ? (
-                  <CustomMail message={message}></CustomMail>
+                  <CustomMail key={index} message={message}></CustomMail>
                 ) : index == 0 ? (
-                  <CustomMail message={message}></CustomMail>
+                  <CustomMail key={index} message={message}></CustomMail>
                 ) : (
                   ""
                 )

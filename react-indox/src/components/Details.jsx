@@ -1,4 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types'
+
+Details.propTypes = {
+  title:PropTypes.string,
+  data:PropTypes.string,
+}
 
 function Details({ title, data }) {
   return (

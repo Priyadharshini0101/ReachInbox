@@ -13,14 +13,14 @@ function SideBar() {
         <title>{'ReachInbox - '+ currentPage}</title>
         <meta name="description" content={``}></meta>
       </Helmet>
-    <div class="dark:bg-[#101113] bg-white z-50 w-[56px]  border-e  border-gray-100 dark:border-[#343A40]">
-      <div class="flex flex-col h-full items-center justify-between">
-        <div class="py-[24px] px-[8px]">
+    <div className="dark:bg-[#101113] bg-white z-50 w-[56px]  border-e  border-gray-100 dark:border-[#343A40]">
+      <div className="flex flex-col h-full items-center justify-between">
+        <div className="py-[24px] px-[8px]">
           <img src={theme === "light"?logoIconDark:logoIconWhite}></img>
         </div>
         <div className=" flex flex-col  items-center  gap-[40px]">
           <Link to="/home" onClick={() =>setCurrentPage("Home")}>
-            <div class="w-[32px] h-[32px] items-center inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
+            <div className="w-[32px] h-[32px] items-center inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={homeIcon}
                 className="w-[20px] h-[20px]"
@@ -28,7 +28,7 @@ function SideBar() {
             </div>
           </Link>
           <Link to="/home" onClick={() =>setCurrentPage("Search")}>
-            <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
+            <div className="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={searchIcon}
                 className="w-[20px] h-[20px]"
@@ -37,7 +37,7 @@ function SideBar() {
           </Link>
 
           <Link to="/home" onClick={() =>setCurrentPage("Email")}>
-            <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
+            <div className="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={emailIcon}
                 className="w-[20px] h-[20px]"
@@ -45,7 +45,7 @@ function SideBar() {
             </div>
           </Link>
           <Link to="/home" onClick={() =>setCurrentPage("Message")}>
-            <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
+            <div className="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={messageIcon}
                 className="w-[20px] h-[20px]"
@@ -54,7 +54,7 @@ function SideBar() {
           </Link>
 
           <Link to="/home" onClick={() =>setCurrentPage("ViewList")}>
-            <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
+            <div className="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={viewListIcon}
                 className="w-[20px] h-[20px]"
@@ -63,7 +63,7 @@ function SideBar() {
           </Link>
           <Link to="/inbox" onClick={() =>setCurrentPage("Inbox")}>
             <div
-              class={`relative w-[32px] h-[32px] items-center inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030]  hover:bg-gray-100 ${
+              className={`relative w-[32px] h-[32px] items-center inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030]  hover:bg-gray-100 ${
                 useLocation().pathname === "/inbox"
                   ? `dark:bg-[#2F3030] bg-gray-100 rounded-md`
                   : ``
@@ -73,14 +73,14 @@ function SideBar() {
                 src={inboxIcon}
                 className="w-[24px] h-[24px]"
               ></img>
-              <div class="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full -top-1.5 -end-1.5">
+              <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full -top-1.5 -end-1.5">
                 2
               </div>
             </div>
           </Link>
 
           <Link to="/home" onClick={() =>setCurrentPage("Graph")}>
-            <div class="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
+            <div className="w-[32px] h-[32px] items-center  inline-flex justify-center hover:rounded-md dark:hover:bg-[#2F3030] hover:bg-gray-100">
               <img
                 src={graphIcon}
                 className="w-[20px] h-[20px]"

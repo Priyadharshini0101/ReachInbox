@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { deleteMail } from "../app/mailSlice";
+import PropTypes from 'prop-types'
 
+DeleteMail.propTypes = {
+  modalIsOpen:PropTypes.boolean,
+  closeModal:PropTypes.boolean,
+  currentMail:PropTypes.object,
+}
 function DeleteMail({ modalIsOpen, closeModal, currentMail }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);

@@ -3,6 +3,15 @@ import axios from "axios";
 import {FaCaretDown } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { imageIcon, linkIcon, personRemoveIcon, previewIcon, sentimentSatisfiedIcon, spellCheckIcon, unfoldMore, variableIcon } from "../assets";
+import PropTypes from  'prop-types'
+
+ReplyMail.propTypes = {
+  modalIsOpen: PropTypes.boolean,
+  currentMail: PropTypes.object,
+  closeModal:PropTypes.boolean
+}
+
+
 function ReplyMail({ modalIsOpen, currentMail, closeModal }) {
   const [replyData, setReplyData] = useState({
     to: currentMail.fromEmail,
@@ -24,7 +33,7 @@ function ReplyMail({ modalIsOpen, currentMail, closeModal }) {
   const sendReply = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.post(
+      await axios.post(
         `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${currentMail.threadId}`,
         {
           from: replyData.from,

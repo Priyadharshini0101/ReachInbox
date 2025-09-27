@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a React application written in Javascript
+A React application built with JavaScript, designed to help users manage and respond to emails efficiently. This project focuses on enhancing email productivity through a user-friendly interface.
 
 ## Installation
 
